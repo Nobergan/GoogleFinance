@@ -13,13 +13,7 @@ $(document).ready(function () {
   });
   $(".test-step label").on("click", function (e) {
     setTimeout(
-      function () {
-        // const input = document.querySelector(".form-group .form-control");
-        // const popup = document.querySelector(".popup");
-        // if (input.checked) {
-        //   popup.classList.remove("is-hidden");
-        // }
-        
+      function () {        
         $(this).parents(".test-step").fadeOut(500);
         setTimeout(
           function () {
@@ -43,6 +37,8 @@ $(document).ready(function () {
     $(this).parents(".test-step").removeClass("active");
   });
 });
+
+// 
 
 const checkBoxes = [...document.querySelectorAll(".megaCheckBox")];
 

